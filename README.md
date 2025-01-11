@@ -34,7 +34,7 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
     **Representación en compuertas de la solución:**
 
-    ![Circuito Digital](\lab2 imagenes\circuito digital.png)
+    ![Circuito Digital](lab2%20imagenes/circuito%20digital.png)
 
     **Tabla de verdad del comportamiento de la red de compuertas**
 
