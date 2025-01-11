@@ -26,7 +26,11 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
 4. **Dominio Estructural (red de compuertas lógicas)**
 
+    -4.1 **Simulación en el dominio estructural**
 
+    Se procede a usar la herramienta de Digital para realizar la simulación de la representación en compuertas lógicas. 
+    Es importante tener en cuenta que el proyecto se debe guardar en una carpeta con el nombre de "top.dig", esto con el propósito
+    de poder sintetizarlo esta propuesta de solución en un dispositivo lógico programable (FPGA).
 
 5. **Descripción en Lenguaje HDL (Hardware Description Lenguage)**
 
