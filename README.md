@@ -34,7 +34,7 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
     **Representación en compuertas de la solución:**
 
-    ![Circuito Digital](<circuito digital-1.png>)
+    ![Circuito Digital](\lab2 imagenes\circuito digital.png)
 
     **Tabla de verdad del comportamiento de la red de compuertas**
 
@@ -66,7 +66,7 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
     ![Mapa de Karnaugh Q5](<MPK Q5.png>)
 
-    
+
 
 
 
