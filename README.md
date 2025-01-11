@@ -38,7 +38,7 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
     **Tabla de verdad del comportamiento de la red de compuertas**
 
-    ![Tabla de verdad](lab2%20imagenes/Tabla_de_verdad.png)
+    ![Tabla de verdad](lab2%20imagenes/tabla.png)
 
     Adicionalmente, se obtienen los mapas de Karnaugh de cada una de las salidas.
 
