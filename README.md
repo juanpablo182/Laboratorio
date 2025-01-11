@@ -92,7 +92,7 @@ Ante este resultado se observa lo siguiente:
 
 * Se cuentan con tres entradas y seis salidas, comparándolo con el planteamiento de la caja negra en el dominio comportamental se cumple.
 
-![CD con NAND](lab2%20imagenes/top.png)
+![TOP](lab2%20imagenes/top.png)
 
 * I2 y ~I1 pasan por una compuerta AND.
 * I0 pasa por una compuerta NOT.
@@ -100,6 +100,15 @@ Ante este resultado se observa lo siguiente:
 
 ### 6. **Síntesis en FPGA (dominio físico final)**
 
+Para el desarrollo de síntesis, se siguieron detalladamente los siguientes pasos de este [video](https://youtu.be/2GnsQ3oH4YA?si=yl4A_M93jGGdeuoe) compartido por el docente Johnny Cubides, para un correcto desarrollo en la síntesis en la FPGA. Con ayuda del programa [Fritzing](https://fritzing.org/) se realizó el circuito propuesto con el objetivo de facilitar visualmente la implementación análoga de la solución a la situación problema.
+
+![Circuito](lab2%20imagenes/Doc1.png)
+
+Posteriormente se configura los pines de entrada y salida de la FPGA:
+
+![Pines](lab2%20imagenes/FPGA.png)
+
+Finalmente, en el siguiente video se muestran los resultados de este apartado, junto con el análisis de las situaciones que se evidenciaron para el desarrollo de este laboratorio.
 
 ### 7. **Conclusiones**
 
