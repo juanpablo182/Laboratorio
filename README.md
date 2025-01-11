@@ -38,33 +38,33 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
 
     **Tabla de verdad del comportamiento de la red de compuertas**
 
-    ![Tabla de verdad](<Tabla de verdad.png>)
+    ![Tabla de verdad](lab2%20imagenes/Tabla_de_verdad.png)
 
     Adicionalmente, se obtienen los mapas de Karnaugh de cada una de las salidas.
 
     **Mapa de Karnaugh para Q0**
 
-    ![Mapa de Karnaugh Q0](<MPK Q0.png>)
+    ![Mapa de Karnaugh Q0](lab2%20imagenes/MPK_Q0.png)
 
     **Mapa de Karnaugh para Q1**
     
-    ![Mapa de Karnaugh Q1](<MPK Q1.png>)
+    ![Mapa de Karnaugh Q1](lab2%20imagenes/MPK_Q1.png)
 
     **Mapa de Karnaugh para Q2**
 
-    ![Mapa de Karnaugh Q2](<MPK Q2.png>)
+    ![Mapa de Karnaugh Q2](lab2%20imagenes/MPK_Q2.png)
 
     **Mapa de Karnaugh para Q3**
 
-    ![Mapa de Karnaugh Q3](<MPK Q3.png>)
+    ![Mapa de Karnaugh Q3](lab2%20imagenes/MPK_Q3.png)
 
     **Mapa de Karnaugh para Q4**
 
-    ![Mapa de Karnaugh Q4](<MPK Q4.png>)
+    ![Mapa de Karnaugh Q4](lab2%20imagenes/MPK_Q4.png)
 
     **Mapa de Karnaugh para Q5**
 
-    ![Mapa de Karnaugh Q5](<MPK Q5.png>)
+    ![Mapa de Karnaugh Q5](lab2%20imagenes/MPK_Q5.png)
 
 
 
