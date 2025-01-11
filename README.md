@@ -82,6 +82,18 @@ De este modo, se procede a exportar la simulación en verilog para su posterior 
 
 ### 5. **Descripción en Lenguaje HDL (Hardware Description Lenguage)**
 
+Se obtiene el siguiente archivo:
+
+![CD con NAND](lab2%20imagenes/verilog.png)
+
+Ante este resultado se observa lo siguiente:
+    - El nombre del módulo asignado es "top".
+    - Se cuentan con tres entradas y seis salidas, comparándolo con el planteamiento de la caja negra en el dominio comportamental se cumple.
+![CD con NAND](lab2%20imagenes/top.png)
+    - I2 y ~I1 pasan por una compuerta AND.
+    - I0 pasa por una compuerta NOT.
+    - En las demás líneas, las señalas de entrada (I0,I2,I1) se asignan directamente a las salidas (Q0,Q4,Q5) o al valor intermedio (Q2_temp).
+
 ### 6. **Síntesis en FPGA (dominio físico final)**
 
 
