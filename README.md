@@ -32,9 +32,25 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
     Es importante tener en cuenta que el proyecto se debe guardar en una carpeta con el nombre de "top.dig", esto con el propósito
     de poder sintetizar esta propuesta de solución en un dispositivo lógico programable (FPGA).
 
+    **Representación en compuertas de la solución:**
+
     ![Circuito Digital](<circuito digital-1.png>)
 
-    De este modo se obtiene
+    **Tabla de verdad del comportamiento de la red de compuertas**
+
+    ![Tabla de verdad](<Tabla de verdad.png>)
+
+    Adicionalmente, se obtienen los mapas de Karnaugh de cada una de las salidas.
+
+    **Mapa de Karnaugh para Q1**
+    
+    ![Mapa de Karnaugh Q1](<MPK Q1.png>)
+
+    **Mapa de Karnaugh para Q2**
+
+    ![Mapa de Karnaugh Q2](<MPK Q2.png>)
+
+    
 
 
 
