@@ -1,16 +1,18 @@
 # Laboratorio 2 - Electrónica Digital I
 ### Nombres: Juan Pablo López Bolívar - Laura Valentina López Vergara - Daniel Castillo Silva
 
-1. **###Dominio Comportamental**
+### 1. **Dominio Comportamental**
 
-    -1.1 **Sistema de Caja Negra**
-
-
-
-    -1.2 **Tabla de Verdad**
+1.1 **Sistema de Caja Negra**
 
 
-    -1.3 **Algoritmo representado en diagrama de flujo**
+
+1.2 **Tabla de Verdad**
+
+
+
+1.3 **Algoritmo representado en diagrama de flujo**
+
 
 
 2. **###Dominio Físico Inicial (Circuito Eléctrico)**
