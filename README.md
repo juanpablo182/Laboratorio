@@ -32,7 +32,7 @@ Describir el circuito a través del lenguaje ladder (haga indicaciones de aquell
     Es importante tener en cuenta que el proyecto se debe guardar en una carpeta con el nombre de "top.dig", esto con el propósito
     de poder sintetizar esta propuesta de solución en un dispositivo lógico programable (FPGA).
 
-    ![Circuito Digital][./lab2 imagenes/circuito digital.png]
+    ![Circuito Digital](<circuito digital-1.png>)
 
     De este modo se obtiene
 
