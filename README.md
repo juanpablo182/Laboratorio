@@ -68,8 +68,17 @@ Adicionalmente, se obtienen los mapas de Karnaugh de cada una de las salidas.
 
 ![Mapa de Karnaugh Q5](lab2%20imagenes/MPK_Q5.png)
 
+Finalmente, Digital brinda la posibilidad de obtener los siguientes circuitos equivalentes.
 
+**Solución equivalente representada por la compuerta universal NAND**
 
+![CD con NAND](lab2%20imagenes/CD_NAND.png)
+
+**Solución equivalente representada por la compuerta AND**
+
+![CD con NAND](lab2%20imagenes/CD2.png)
+
+De este modo, se procede a exportar la simulación en verilog para su posterior implementación en la FPGA.
 
 ### 5. **Descripción en Lenguaje HDL (Hardware Description Lenguage)**
 
