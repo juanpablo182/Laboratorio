@@ -123,7 +123,7 @@ Obteniendo el siguiente montaje:
 
 ![Montaje](lab2%20imagenes/montaje2.jpg)
 
-Finalmente, en el siguiente video se muestran los resultados de este apartado, junto con el análisis de las situaciones que se evidenciaron para el desarrollo de este laboratorio.
+Finalmente, en el siguiente [video](https://youtu.be/qAoocXic0_c) se muestran los resultados de este apartado, junto con el análisis de las situaciones que se evidenciaron para el desarrollo de este laboratorio.
 
 ### 7. **Conclusiones**
 
