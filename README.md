@@ -17,18 +17,27 @@
 
 ### 2. **Dominio Físico Inicial (Circuito Eléctrico)**
 
-Diseñar un circuito eléctrico del sistema de control con sus contactos de entrada y actuadores de salida.
+Se procede a diseñar un circuito eléctrico del sistema de control con sus contactos de entrada y actuadores de salida.
 
-Describir el circuito a través del lenguaje ladder (haga indicaciones de aquellas cosas que pudo haber asumido).
+![Circuito Digital](lab2%20imagenes/circuito.jpg)
 
+Circuito representado a través del lenguaje ladder.
 
-### 3. **Simulación en Lenguaje Adder**
+![Circuito Digital](lab2%20imagenes/circuito_ladder.png)
+
+haga indicaciones de cosas que pudo haber asumido...
+
+### 3. **Simulación en Lenguaje Ladder**
 
 
 
 ### 4. **Dominio Estructural (red de compuertas lógicas)**
 
-4.1 **Simulación en el dominio estructural**
+4.1 **Diagrama de lenguaje ladder a red de compuertas lógicas**
+
+
+
+4.2 **Simulación en el dominio estructural**
 
 Se procede a usar la herramienta de Digital para realizar la simulación de la representación en compuertas lógicas. 
 Es importante tener en cuenta que el proyecto se debe guardar en una carpeta con el nombre de "top.dig", esto con el propósito
