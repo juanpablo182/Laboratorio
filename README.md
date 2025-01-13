@@ -14,6 +14,14 @@
 1.3 **Algoritmo representado en diagrama de flujo**
 
 
+**Lógica aplicada a la situación problema:**
+
+La lógica del diseño se basó en la premisa de que la casa siempre debe estar energizada, salvo en casos de fallos externos o cuando el usuario active el botón de paro manual. La salida Q5, correspondiente al sensor de red eléctrica, permanece activa mientras la red esté disponible (I1). Si la red falla, el banco de baterías (I2) entra en acción para suplir la demanda energética, activando el relé que conmutara entre las fuentes de energía (Q1), el sensor de energìa (Q2) y el senor de las baterías (Q4).
+
+Además, se implementó un botón de paro manual (I0) para que el usuario pudiera desenergizar la casa cuando lo desee, por ejemplo, durante tareas de mantenimiento. En caso de que tanto la red eléctrica como el banco de baterías estén disponibles (I1, I2), la casa tomará la energía de la red para preservar la carga de las baterías y utilizar su energía después.
+
+En cuanto a las entradas, (I0) e (I1) son pulsadores normalmente abiertos, que se activan únicamente cuando son presionados. Por otro lado, (I2), correspondiente a la red eléctrica, es un pulsador normalmente cerrado, lo que asegura que la entrada esté activa a menos que ocurra un fallo en el suministro eléctrico. Esta lógica garantiza que el sistema funcione de manera confiable y eficiente, cumpliendo con las necesidades planteadas por la situación problemática.
+
 
 ### 2. **Dominio Físico Inicial (Circuito Eléctrico)**
 
@@ -66,13 +74,7 @@ Estas suposiciones son clave para garantizar que el diseño del sistema sea cohe
 
 ### 3. **Simulación en Lenguaje Ladder**
 
-**Lógica aplicada a la situación problema:**
 
-La lógica del diseño se basó en la premisa de que la casa siempre debe estar energizada, salvo en casos de fallos externos o cuando el usuario active el botón de paro manual. La salida Q5, correspondiente al sensor de red eléctrica, permanece activa mientras la red esté disponible (I1). Si la red falla, el banco de baterías (I2) entra en acción para suplir la demanda energética, activando el relé que conmutara entre las fuentes de energía (Q1), el sensor de energìa (Q2) y el senor de las baterías (Q4).
-
-Además, se implementó un botón de paro manual (I0) para que el usuario pudiera desenergizar la casa cuando lo desee, por ejemplo, durante tareas de mantenimiento. En caso de que tanto la red eléctrica como el banco de baterías estén disponibles (I1, I2), la casa tomará la energía de la red para preservar la carga de las baterías y utilizar su energía después.
-
-En cuanto a las entradas, (I0) e (I1) son pulsadores normalmente abiertos, que se activan únicamente cuando son presionados. Por otro lado, (I2), correspondiente a la red eléctrica, es un pulsador normalmente cerrado, lo que asegura que la entrada esté activa a menos que ocurra un fallo en el suministro eléctrico. Esta lógica garantiza que el sistema funcione de manera confiable y eficiente, cumpliendo con las necesidades planteadas por la situación problemática.
 
 ### 4. **Dominio Estructural (red de compuertas lógicas)**
 
