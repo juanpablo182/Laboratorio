@@ -180,7 +180,19 @@ En cada caso, se evalúan las condiciones establecidas en el dominio comportamen
 
 4.1 **Diagrama de lenguaje ladder a red de compuertas lógicas**
 
+Para el diseño lógico, la tabla de verdad y las condiciones previamente planteadas guiarán la construcción de las compuertas.
 
+**El indicador de paro activo** está directamente relacionado con la activación del botón de paro (I0). Cuando el botón está activado (I0 = 1), la salida Q0 se enciende. Esto se implementa con una conexión directa entre I0 y Q0.
+
+**El relé principal**  se activa cuando el sistema no está en estado de paro (I0 = 0). Para implementar esta lógica, se utiliza un inversor para negar la señal de I0, de forma que Q1 sea activada únicamente cuando el paro no está activo.
+
+**Sensor de energía**  se enciende bajo la misma condición que Q1, reflejando que el sistema está energizado. Por lo tanto, está conectado directamente a Q1, compartiendo la misma lógica.
+
+**El relé del contactor** se activa únicamente cuando las baterías (I2) están energizando el sistema, siempre que la red eléctrica (I1) esté inactiva. Para ello, se utiliza un inversor para negar la señal de I1, y posteriormente se conecta junto a I2 en una compuerta AND.
+
+**Sensor de baterías** refleja si las baterías están energizando el sistema. Por lo tanto, Q4 se activa directamente cuando I2 = 1, sin necesidad de lógica adicional.
+
+**Sensor de red eléctrica** señala si la red eléctrica está disponible siendo nuevamente una conexión directa con el indicador del mismo (Q5). 
 
 4.2 **Simulación en el dominio estructural**
 
