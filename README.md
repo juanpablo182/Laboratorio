@@ -5,22 +5,22 @@
 
 1.1 **Sistema de Caja Negra**
 
-
+![Caja negra](lab2%20imagenes/caja.png)
 
 **Entradas:**
 
-* I0: Botón de Paro
-* I1: Red Eléctrica
-* I2: Baterías
+* I0: Botón de Paro: (1 si está activado, 0 si no).
+* I1: Red Eléctrica: (1 si hay suministro, 0 si no).
+* I2: Baterías: (1 si están cargadas, 0 si no).
 
 **Salidas (Indicadores)**:
 
-* Q0: Indica el estado de paro
-* Q1: Relè/Energizador
-* Q2: Sensor energía
-* Q3: Rele contactor
-* Q4: Sensor baterias
-* Q5: Sensor red
+* Q0: Indica el estado de paro:  (1 si está activado, 0 si no).
+* Q1: Relè/Energizador: (1 si está energizado, 0 si no).
+* Q2: Sensor energía:(1 si hay energía disponible, 0 si no).
+* Q3: Rele contactor: (1 si está activado, 0 si no).
+* Q4: Sensor baterias: (1 si las baterías están cargadas, 0 si no).
+* Q5: Sensor red: (1 si la red eléctrica está disponible, 0 si no).
 
 1.2 **Tabla de Verdad**
 
