@@ -7,12 +7,28 @@
 
 
 
+**Entradas:**
+
+* I0: Botón de Paro
+* I1: Red Eléctrica
+* I2: Baterías
+
+**Salidas (Indicadores)**:
+
+* Q0: Indica el estado de paro
+* Q1: Relè/Energizador
+* Q2: Sensor energía
+* Q3: Rele contactor
+* Q4: Sensor baterias
+* Q5: Sensor red
+
 1.2 **Tabla de Verdad**
 
-
+![Tabla de verdad](lab2%20imagenes/tab.png)
 
 1.3 **Algoritmo representado en diagrama de flujo**
 
+![Diagrama de Flujo](lab2%20imagenes/flowchart.jpg)
 
 **Lógica aplicada a la situación problema:**
 
