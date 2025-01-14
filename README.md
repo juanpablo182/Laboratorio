@@ -90,7 +90,91 @@ Estas suposiciones son clave para garantizar que el diseño del sistema sea cohe
 
 ### 3. **Simulación en Lenguaje Ladder**
 
+**Caso 1: Sistema operando con red eléctrica:**
 
+Si el botón de paro está desactivado (I0 = 0) y la red eléctrica está activa (I1 = 1), el sistema opera utilizando la red eléctrica para energizar las cargas. Solo los indicadores relacionados con la red estarán activos.
+
+**Condiciones de entrada:**
+
+* I0 = 0 (Paro desactivado)
+* I1 = 1 (Red eléctrica activa)
+* I2 = 0 (Baterías desactivadas)
+
+**Salidas esperadas:**
+
+* Q0 = 0
+* Q1 = 1
+* Q2 = 1
+* Q3 = 0 
+* Q4 = 0
+* Q5 = 1
+
+![Caso 1: Lenguaje Ladder](lab2%20imagenes/sim1ladder.png)
+
+**Caso 2: Botón de Emergencia activado:**
+
+Cuando el botón de paro (I0) está activado, el sistema entra en modo de paro. En esta situación, todas las salidas se desactivan, excepto el indicador de paro (Q0), que se enciende.
+
+**Condiciones de entrada:**
+
+* I0 = 1 (Paro activado)
+* I1 = 1 (Red eléctrica activa)
+* I2 = 0 o 1 (Puede estar en cualquier estado)
+
+**Salidas esperadas:**
+
+* Q0 = 1
+* Q1 = 0
+* Q2 = 0
+* Q3 = 0 
+* Q4 = 0
+* Q5 = 1
+
+![Caso 1: Lenguaje Ladder](lab2%20imagenes/sim2ladder.png)
+
+**Caso 3: Sistema operando con respaldo de baterías con fuente principal red eléctrica:**
+
+Si el botón de paro está desactivado (I0 = 0) y la red eléctrica está activa (I1 = 1), pero además se detectan baterías activas (I2 = 1), el sistema utiliza las baterías como fuente de energía de respaldo y como fuente principal la red eléctrica. Los indicadores asociados a las baterías estarán activos junto con el sensor de energía.
+
+**Condiciones de entrada:**
+
+* I0 = 0 (Paro desactivado)
+* I1 = 1 (Red eléctrica activa)
+* I2 = 1 (Baterías activas)
+
+**Salidas esperadas:**
+
+* Q0 = 0
+* Q1 = 1
+* Q2 = 1
+* Q3 = 0 
+* Q4 = 1
+* Q5 = 1
+
+![Caso 1: Lenguaje Ladder](lab2%20imagenes/sim3ladder.png)
+
+**Caso 4: Energización por Baterías:**
+
+Si el botón de paro está desactivado (I0 = 0) y no hay suministro de red eléctrica (I1 = 0), pero las baterías están activas (I2 = 1), el sistema utiliza las baterías para energizar. Los indicadores relacionados con las baterías estarán activos.
+
+**Condiciones de entrada:**
+
+* I0 = 0 (Paro desactivado)
+* I1 = 0 (Red eléctrica inactiva)
+* I2 = 1 (Baterías activas)
+
+**Salidas esperadas:**
+
+* Q0 = 0
+* Q1 = 1
+* Q2 = 1
+* Q3 = 1 
+* Q4 = 1
+* Q5 = 0
+
+![Caso 1: Lenguaje Ladder](lab2%20imagenes/sim4ladder.png)
+
+En cada caso, se evalúan las condiciones establecidas en el dominio comportamental. Las simulaciones se realizaron con las herramientas de programación ladder, validando el comportamiento esperado para cada escenario, como se detalla a continuación.
 
 ### 4. **Dominio Estructural (red de compuertas lógicas)**
 
