@@ -194,6 +194,16 @@ Para el diseño lógico, la tabla de verdad y las condiciones previamente plante
 
 **Sensor de red eléctrica** señala si la red eléctrica está disponible siendo nuevamente una conexión directa con el indicador del mismo (Q5). 
 
+![Compuertas](lab2%20imagenes/esq.png)
+
+* Se utilizan NOT (inversores) para negar las señales de I0 y I1 en los nodos donde es necesario.
+* Una compuerta AND combina las señales de I2 y el inversor de I1 para activar Q3.
+* Los nodos que comparten señales se conectan directamente sin duplicar componentes.
+
+![Compuertas](lab2%20imagenes/esq2.png)
+
+En este diseño lógico estructural, se representan los componentes necesarios para implementar el comportamiento descrito en el dominio comportamental. Cada nodo y salida se implementa considerando los niveles de abstracción del dominio físico. La simulación permite validar las condiciones y asegurar que cada salida se active de acuerdo con las entradas.
+
 4.2 **Simulación en el dominio estructural**
 
 Se procede a usar la herramienta de Digital para realizar la simulación de la representación en compuertas lógicas. 
