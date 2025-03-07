@@ -20,7 +20,7 @@ El protocolo I2C parte de tener ambas señales en un valor lógico 1. Cuando se 
 
 ![Figura 1](lab04%20imagenes/figura1.png)
 
-**Figura 1.** Comportamiento de señales SDA y SCL del protocolo I2C.
+***Figura 1.*** *Comportamiento de señales SDA y SCL del protocolo I2C.*
 
 Otros aspectos importantes para considerar:
 
@@ -43,7 +43,7 @@ La FSM cambia de estado según condiciones específicas, y cada estado ejecuta c
 
 ![Figura 2](lab04%20imagenes/figura2.png)
 
-**Figura 2**. Máquina de estados I2C. 
+***Figura 2.*** *Máquina de estados I2C.* 
 
 A continuación, se presenta la explicación del código de la máquina de estados realizada en verilog:
 
