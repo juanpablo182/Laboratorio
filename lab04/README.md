@@ -18,15 +18,15 @@ El protocolo I2C parte de tener ambas señales en un valor lógico 1. Cuando se 
   - Registro apuntador: Solo podemos acceder a este registro cuando queremos realizar una operación de escritura. A partir del valor que le asignemos, en una futura operación de lectura podremos recuperar un cierto conjunto de datos. En otras palabras, podemos leer tanto el registro de configuración como el registro de conversión. 
 - Operación de lectura: Si R/W es uno (1), habilitamos la señal SDA como entrada para recibir datos a través de ella. Posteriormente recibimos 8 bits desde el esclavo, luego enviamos un bit de confirmación ACK = 0, recibimos los siguientes 8 bits, y finalizamos la comunicación con otro bit de confirmación y colocando la señal SDA en 0.
 
-![Figura 1](lab03%20imagenes/Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.001.png)
+![Figura 1](lab04%20imagenes/figura1.png)
 
 **Figura 1.** Comportamiento de señales SDA y SCL del protocolo I2C.
 
 Otros aspectos importantes para considerar:
 
-- La señal SCL tiene una frecuencia de 0.1 MHz; valor que se encuentra dentro del rango indicado en la hoja de datos del ADS1015.
-- La señal SCL permanece en 1 mientras se transmite un dato. Los tiempos mínimos de estado en alto y bajo se pueden observar en la hoja de datos.
-- Cada transmisión de datos finaliza colocando la señal SCL en 1, seguido de la señal SDA en 1.  
+* La señal SCL tiene una frecuencia de 0.1 MHz; valor que se encuentra dentro del rango indicado en la hoja de datos del ADS1015.
+* La señal SCL permanece en 1 mientras se transmite un dato. Los tiempos mínimos de estado en alto y bajo se pueden observar en la hoja de datos.
+* Cada transmisión de datos finaliza colocando la señal SCL en 1, seguido de la señal SDA en 1.  
 
 **2. Máquina de Estados en el Módulo I2C:**
 
@@ -41,13 +41,13 @@ El código usa una máquina de estados finitos (FSM) para manejar la comunicaci�
 
 La FSM cambia de estado según condiciones específicas, y cada estado ejecuta ciertas acciones.
 
-![](Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.002.png)
+![Figura 2](lab04%20imagenes/figura2.png)
 
-**Figura 7**. Máquina de estados I2C. 
+**Figura 2**. Máquina de estados I2C. 
 
 A continuación, se presenta la explicación del código de la máquina de estados realizada en verilog:
 
-## <a name="_hbkfxz3cz9dq"></a>Estado 0: Inicio de transmisión
+* Estado 0: Inicio de transmisión
 
 Este estado prepara la línea SDA para comenzar la transmisión.
 
@@ -82,7 +82,6 @@ case(S)
 * Se asegura de que SDA esté en alto (SDA\_out = 1).
 * Cuando el contador c llega a 10, SDA\_out cambia a 0, lo que indica el inicio de la comunicación I2C.
 * Se pasa al Estado 1 para comenzar la escritura de datos.
-## <a name="_tmv4ne7oo7c5"></a>
 
 **Estado 1: Escritura**
 Aquí se envían los datos al esclavo I2C. Se usa otra variable llamada sw para dividir este estado en 4 sub-estados:
@@ -119,14 +118,16 @@ Aquí se envían los datos al esclavo I2C. Se usa otra variable llamada sw para 
 
 `        `end
 
-¿Qué está pasando aquí?
+* ¿Qué está pasando aquí?
 
-1. Se envía la dirección del dispositivo esclavo en dir\_msj (7 bits de dirección + 1 bit de lectura/escritura).
-1. Se cuenta cf hasta 9 (8 bits + 1 bit ACK).
-1. Si RW == 1, se cambia al estado 2 (lectura).
-1. Si RW == 0, se pasa a sw = 01 para enviar más datos.
-### <a name="_xygycw5d0qhg"></a>Sub-estado 2'b01: Envío del Registro Apuntado**r**
-****        2'b01: begin // Envío del registro de apuntador
+    * Se envía la dirección del dispositivo esclavo en dir\_msj (7 bits de dirección + 1 bit de lectura/escritura).
+    * Se cuenta cf hasta 9 (8 bits + 1 bit ACK).
+    * Si RW == 1, se cambia al estado 2 (lectura).
+    * Si RW == 0, se pasa a sw = 01 para enviar más datos.
+
+Sub-estado 2'b01: Envío del Registro Apuntador:
+
+2'b01: begin // Envío del registro de apuntador
 
 `            `if (cf <= 8) begin
 
@@ -156,13 +157,15 @@ Aquí se envían los datos al esclavo I2C. Se usa otra variable llamada sw para 
 
 `        `end
 
- ¿Qué está pasando aquí?
+* ¿Qué está pasando aquí?
 
-1. Se envía un byte (reg\_ap) que indica qué registro se quiere leer/escribir en el esclavo.
-1. Si ap == 1, se pasa a sw = 10 para enviar más datos.
-1. Si ap == 0, se finaliza la comunicación (estado S = 3).
-### <a name="_mhwr2etqsnsq"></a>Sub-estado 2'b10 y 2'b11: Envío de Configuración
-****        2'b10: begin // Envío de configuración 1
+    * Se envía un byte (reg\_ap) que indica qué registro se quiere leer/escribir en el esclavo.
+    * Si ap == 1, se pasa a sw = 10 para enviar más datos.
+    * Si ap == 0, se finaliza la comunicación (estado S = 3).
+
+Sub-estado 2'b10 y 2'b11: Envío de Configuración
+
+        2'b10: begin // Envío de configuración 1
 
 `            `if (cf <= 8) begin
 
@@ -204,14 +207,16 @@ Aquí se envían los datos al esclavo I2C. Se usa otra variable llamada sw para 
 
 `        `end
 
- ¿Qué está pasando aquí?
+* ¿Qué está pasando aquí?
 
-- Se envían los datos conf1 y conf2 al esclavo.
-- Luego se va al estado 3 para finalizar.
-## <a name="_tsqog87l4na5"></a>**Estado 2: Lectura de Datos**
+    * Se envían los datos conf1 y conf2 al esclavo.
+    * Luego se va al estado 3 para finalizar.
+
+## Estado 2: Lectura de Datos
+
 Si RW == 1, se entra en este estado. Se lee la información enviada por el esclavo.
 
-2: begin    // Estado de lectura
+ begin    // Estado de lectura
 
 `    `if (sw == 0) begin
 
@@ -255,14 +260,16 @@ Si RW == 1, se entra en este estado. Se lee la información enviada por el escla
 
 end
 
- ¿Qué está pasando aquí?
+* ¿Qué está pasando aquí?
 
-1. Se lee el primer byte (msb).
-1. Luego se envía un ACK (SDA\_out = 0).
-1. Se lee el segundo byte (lsb).
-1. Se pasa al estado 3 para finalizar.
-## <a name="_mwejk5f2zfls"></a>**Estado 3: Final de transmisión**
-****3: begin    // Final de transmisión
+    * 1. Se lee el primer byte (msb).
+    * 2. Luego se envía un ACK (SDA\_out = 0).
+    * 3. Se lee el segundo byte (lsb).
+    * 4. Se pasa al estado 3 para finalizar.
+
+## **Estado 3: Final de transmisión**
+
+3: begin    // Final de transmisión
 
 `    `bc <= 0;
 
@@ -272,10 +279,10 @@ end
 
 end
 
-¿Qué está pasando aquí?
+* ¿Qué está pasando aquí?
 
-- Se limpian las variables (bc, S, sw).
-- La FSM vuelve al estado 0 para empezar otra transmisión.
+    * 1.  Se limpian las variables (bc, S, sw).
+    * 2.  La FSM vuelve al estado 0 para empezar otra transmisión.
 
 **¿La maquina de estados funciona?**
 
@@ -299,27 +306,28 @@ A continuación, se muestra la segunda secuencia, donde se observan los siguient
 
 En nuestro proyecto, se requiere el uso de 8 bits. Sin embargo, nuestro conversor **ADS1015** tiene una resolución de 12 bits, por lo que priorizamos los 8 bits más significativos. Los últimos 4 bits, en teoría, deberían ser **0**, pero en la práctica pueden tomar valores aleatorios, lo que genera cierta variabilidad y los hace menos estables. Aun así, los primeros 8 bits cumplen con la estabilidad esperada.
 
-![](Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.003.png)
+![Figura 3](lab04%20imagenes/figura3.png)
 
-**Figura 1.** Comprobación del I2C con el osciloscopio.
+***Figura 1.*** *Comprobación del I2C con el osciloscopio.*
 
 **Diagrama RTL:**
 
 Debido a la magnitud del diagrama rtl del i2c, este va a ser divido en partes para mostar su diseño. Para realizar este, se implemento el comando: Make rtl top=I2C. 
 
-![](Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.004.png)
+![Figura 4](lab04%20imagenes/figura4.png)
 
-Figura 3. Parte superior del diseño del I2C. 
+***Figura 2***. *Parte superior del diseño del I2C.*
 
-![](Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.005.png)
+![Figura 5](lab04%20imagenes/figura5.png)
 
-Figura 2. Parte inferior del diseño del I2C. 
+***Figura 3.*** *Parte inferior del diseño del I2C.*
+
 
 **Simulacion Iverilog:**
 
 **Registro de sìntesis y place & route donde:** 
 
-![](Aspose.Words.6c82f9de-28b1-45fd-aafd-9aef5f0b6391.006.png)
+![Figura 1](lab04%20imagenes/figura6.png)
 
 En la implementación del sistema en la FPGA iCE40, se observó un consumo eficiente de recursos. El diseño ocupa 358 de 7680 celdas lógicas (LUTs), lo que representa un 4% del total disponible. Además, no se hace uso de la memoria RAM interna (0 de 32 bloques, 0%).
 
