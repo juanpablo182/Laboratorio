@@ -261,4 +261,5 @@ Inicialmente, en la solución propuesta, se contemplaba no solo la captación de
 A pesar de esta diferencia con la solución inicial, el objetivo principal del proyecto se mantuvo inalterado: demostrar la viabilidad de captar energía piezoeléctrica de los pasos y visualizar en tiempo real el voltaje generado. La arquitectura implementada permite un monitoreo eficiente y sienta las bases para futuras mejoras, como la integración del conteo de pasos en versiones posteriores del sistema.
 
 ![Figura 10](lab03%20imagenes/figura10.png)
+
 ***Figura 10.*** *Datos en decimal mostrados en la pantalla de un celular.*
