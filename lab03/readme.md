@@ -11,6 +11,8 @@ El objetivo del laboratorio 3 es realizar un voltímetro para su posterior visua
 
 A continuación, se presenta la representación gráfica del diagrama de bloques:
 
+![Figura 1](lab03%20imagenes/figura1.png)
+
 ***Figura 1.*** *Diagrama de bloques.*
 
 1.2 **Diseño e implementación del circuito:**
@@ -34,6 +36,8 @@ La salida generada por los piezoeléctricos se configuró en paralelo, permitien
 
 ### **2. SIMULACIÓN Y MONTAJE INICIAL DE CIRCUITO DE PIEZOELÉCTRICOS Y CIRCUITO ANALÓGICO**
 
+![Figura 2](lab03%20imagenes/figura2.png)
+
 ***Figura 2.*** *Implementación en Proteus.*
 
 La simulación en Proteus tiene como objetivo evaluar el comportamiento del circuito diseñado para la captación y almacenamiento de energía generada por discos piezoeléctricos. Se analizan la disposición de los componentes, la rectificación de la señal y la eficiencia del almacenamiento de energía en los condensadores.
@@ -47,6 +51,8 @@ Rectificación de la Señal – Puente de Diodos: La energía generada por los p
 Filtrado y Almacenamiento – Banco de Condensadores: A la salida del puente de diodos, se conecta un banco de condensadores en paralelo compuesto por tres condensadores de 10 µF - 50V. La función principal de estos condensadores es suavizar la señal rectificada y almacenar la energía generada. La conexión en paralelo aumenta la capacidad total de almacenamiento y ayuda a reducir la fluctuación del voltaje.
 
 2.2. **Resultado de simulación en proteus de “una pisada**
+
+![Figura 3](lab03%20imagenes/figura3.png)
 
 ***Figura 3.*** *Simulación de una pisada.*
 
@@ -64,7 +70,11 @@ Medición de la Salida: En la simulación se ha colocado un voltímetro a la sal
 
 A continuación se adjuntan imágenes de la implementación física del proyecto.
 
+![Figura 4](lab03%20imagenes/figura4.png)
+
 ***Figura 4.*** *Implementación física circuito piezoeléctricos sobre tabla de madera.*
+
+![Figura 5](lab03%20imagenes/figura5.png)
 
 ***Figura 5.*** *Circuito análogo - rectificador de onda y condensadores en paralelo.*
 
@@ -98,6 +108,8 @@ El código usa una máquina de estados finitos (FSM) para manejar la comunicaci�
 
 La FSM cambia de estado según condiciones específicas, y cada estado ejecuta ciertas acciones.
 
+![Figura 6](lab03%20imagenes/figura6.png)
+
 ***Figura 6.*** *Máquina de estados I2C.*
 
 Este diseño se abordarà con profundidad en el laboratorio 4.
@@ -106,9 +118,13 @@ Este diseño se abordarà con profundidad en el laboratorio 4.
 
 La implementación analógica del circuito se diseñó con el objetivo de generar una PCB con el fin de cumplir con la rúbrica en cuanto a la presentación del proyecto, para eso se hizo uso del software KiCad, el cual permitió establecer este aspecto.
 
+![Figura 7](lab03%20imagenes/figura7.png)
+
 ***Figura 7.*** *PCB en KiCad.*
 
 Se implementó la entrada de los piezoeléctricos como una bornera de 1x2, luego el puente rectificador de diodos con referencia al 1N4148 y los tres condensadores electrolíticos en paralelo. Finalmente, KiCad permite la implementación del conversor ADS1015, se relacionaron las entradas, las salidas, los puertos de energización y salida a la FPGA.
+
+![Figura 8](lab03%20imagenes/figura8.png)
 
 ***Figura 8.*** *Implementación PCB.*
 
@@ -138,11 +154,7 @@ Este código en Arduino se encarga de recibir datos por el puerto serial, proces
 
 6.1. **Definición de Variables**
 
-uint8_t estado, msb, lsb;
-
-int mensaje, v;
-
-int16_t num_dig;
+![Código 1](lab03%20imagenes/codigo1.png)
 
 * estado: almacena los datos recibidos por el puerto serial.
 
@@ -156,17 +168,7 @@ int16_t num_dig;
 
 6.2. **Función de Complemento a 2**
 
-int16_t complemento2(uint16_t num){
-
-if (num & 0x800)
-
-return num | 0xF000;
-
-else
-
-return num;
-
-}
+![Código 2](lab03%20imagenes/codigo2.png)
 
 * Esta función convierte un número de 12 bits con signo (que usa complemento a 2) a un número de 16 bits con signo.
 
@@ -182,17 +184,7 @@ Ejemplo:
 
 6.3. **Configuración Inicial (setup())**
 
-void setup() {
-
-Serial.begin(9600);
-
-msb = 0;
-
-lsb = 0;
-
-num_dig = 0;
-
-}
+![Código 3](lab03%20imagenes/codigo3.png)
 
 * **Inicia la comunicación serial a 9600 baudios.**
 
@@ -200,35 +192,13 @@ num_dig = 0;
 
 6.4. **Bucle Principal (loop())**
 
-void loop() {
-
-if (Serial.available()){
-
-estado = Serial.read();
-
-}
+![Código 4](lab03%20imagenes/codigo4.png)
 
 * **Si hay datos en el puerto serial**, los lee y los almacena en estado.
 
 6.4.1. **Procesamiento del Mensaje**
 
-if (estado == 253) {
-
-mensaje = 1;
-
-} else if (mensaje == 1) {
-
-msb = estado;
-
-mensaje = 2;
-
-} else if (mensaje == 2) {
-
-lsb = estado;
-
-mensaje = 3;
-
-}
+![Código 5](lab03%20imagenes/codigo5.png)
 
 * El protocolo de comunicación usa un byte de inicio con el valor 253.
 
@@ -240,13 +210,7 @@ mensaje = 3;
 
 6.5. **Conversión de Datos**
 
-if (mensaje == 3) {
-
-num_dig = (msb << 4) | (lsb >> 4);  // Se corrigió el desplazamiento
-
-mensaje = 0;  // Reiniciar para esperar nuevos datos
-
-}
+![Código 6](lab03%20imagenes/codigo6.png)
 
 * Una vez que se tienen msb y lsb, se reconstruye el número de 12 bits:
 
@@ -264,9 +228,7 @@ Ejemplo:
 
 6.6. **Conversión a Complemento a 2**
 
-int16_t num = complemento2(num_dig);
-
-Serial.println(num);
+![Código 7](lab03%20imagenes/codigo7.png)
 
 * Se convierte el número de 12 bits en un entero con signo de 16 bits usando complemento2(num_dig).
 
@@ -274,7 +236,7 @@ Serial.println(num);
 
 6.7. **Cálculo del Voltaje**
 
-v = 5*(num_dig - (-274))/(1200 - (-274));
+![Código 8](lab03%20imagenes/codigo8.png)
 
 * Interpola el número digital num_dig a un voltaje:
 
@@ -286,6 +248,8 @@ v = 5*(num_dig - (-274))/(1200 - (-274));
 
 A Continuaciòn, se muestran los datos en binario recibidos por la ESP32 en arduino cloud:
 
+![Figura 9](lab03%20imagenes/figura9.png)
+
 ***Figura 9.*** *Datos en binario recibidos por la ESP32 en arduino cloud.*
 
 ## 7. **RESULTADOS FINALES**
@@ -296,4 +260,5 @@ Inicialmente, en la solución propuesta, se contemplaba no solo la captación de
 
 A pesar de esta diferencia con la solución inicial, el objetivo principal del proyecto se mantuvo inalterado: demostrar la viabilidad de captar energía piezoeléctrica de los pasos y visualizar en tiempo real el voltaje generado. La arquitectura implementada permite un monitoreo eficiente y sienta las bases para futuras mejoras, como la integración del conteo de pasos en versiones posteriores del sistema.
 
+![Figura 10](lab03%20imagenes/figura10.png)
 ***Figura 10.*** *Datos en decimal mostrados en la pantalla de un celular.*
