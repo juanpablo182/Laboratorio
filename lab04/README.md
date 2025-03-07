@@ -118,14 +118,14 @@ Aquí se envían los datos al esclavo I2C. Se usa otra variable llamada sw para 
 
 `        `end
 
-* ¿Qué está pasando aquí?
+# **¿Qué está pasando aquí?**
 
     * Se envía la dirección del dispositivo esclavo en dir\_msj (7 bits de dirección + 1 bit de lectura/escritura).
     * Se cuenta cf hasta 9 (8 bits + 1 bit ACK).
     * Si RW == 1, se cambia al estado 2 (lectura).
     * Si RW == 0, se pasa a sw = 01 para enviar más datos.
 
-Sub-estado 2'b01: Envío del Registro Apuntador:
+***Sub-estado 2'b01: Envío del Registro Apuntador:***
 
 2'b01: begin // Envío del registro de apuntador
 
@@ -157,13 +157,13 @@ Sub-estado 2'b01: Envío del Registro Apuntador:
 
 `        `end
 
-* ¿Qué está pasando aquí?
+**¿Qué está pasando aquí?**
 
     * Se envía un byte (reg\_ap) que indica qué registro se quiere leer/escribir en el esclavo.
     * Si ap == 1, se pasa a sw = 10 para enviar más datos.
     * Si ap == 0, se finaliza la comunicación (estado S = 3).
 
-Sub-estado 2'b10 y 2'b11: Envío de Configuración
+***Sub-estado 2'b10 y 2'b11: Envío de Configuración***
 
         2'b10: begin // Envío de configuración 1
 
@@ -207,7 +207,7 @@ Sub-estado 2'b10 y 2'b11: Envío de Configuración
 
 `        `end
 
-* ¿Qué está pasando aquí?
+**¿Qué está pasando aquí?**
 
     * Se envían los datos conf1 y conf2 al esclavo.
     * Luego se va al estado 3 para finalizar.
@@ -260,12 +260,12 @@ Si RW == 1, se entra en este estado. Se lee la información enviada por el escla
 
 end
 
-* ¿Qué está pasando aquí?
+**¿Qué está pasando aquí?**
 
-    * 1. Se lee el primer byte (msb).
-    * 2. Luego se envía un ACK (SDA\_out = 0).
-    * 3. Se lee el segundo byte (lsb).
-    * 4. Se pasa al estado 3 para finalizar.
+    * Se lee el primer byte (msb).
+    * Luego se envía un ACK (SDA\_out = 0).
+    * Se lee el segundo byte (lsb).
+    * Se pasa al estado 3 para finalizar.
 
 ## **Estado 3: Final de transmisión**
 
@@ -279,10 +279,10 @@ end
 
 end
 
-* ¿Qué está pasando aquí?
+**¿Qué está pasando aquí?**
 
-    * 1.  Se limpian las variables (bc, S, sw).
-    * 2.  La FSM vuelve al estado 0 para empezar otra transmisión.
+    * Se limpian las variables (bc, S, sw).
+    * La FSM vuelve al estado 0 para empezar otra transmisión.
 
 **¿La maquina de estados funciona?**
 
